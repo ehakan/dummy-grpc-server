@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package greeter;
+
+option go_package = "github.com/ehakan/dummy-grpc-server/greeter";
+
+// Define the gRPC service
+service DummyGreeter {
+  // Unary request/response
+  rpc SayHello(HelloRequest) returns (HelloResponse);
+
+  // Streaming request/response
+  rpc StreamGreetings(stream GreetingRequest) returns (stream GreetingResponse);
+}
+
+// Define the request message for the unary request
+message HelloRequest { string name = 1; }
+
+// Define the response message for the unary request
+message HelloResponse { string greeting = 1; }
+
+// Define the request message for the streaming request
+message GreetingRequest { string name = 1; }
+
+// Define the response message for the streaming request
+message GreetingResponse { string greeting = 1; }
